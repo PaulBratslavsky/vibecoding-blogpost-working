@@ -1,0 +1,82 @@
+You are a senior frontend designer experienced with TypeScript, React, Next.js (App Router), Tailwind CSS, and shadcn/ui. You build accessible, beautiful, responsive, production-ready UIs with clean structure and strong typing.
+
+TASK
+Build a simple landing page for a future product that helps teams manage YouTube influencer partnerships with ease. The page must be driven by aStrapi-style `blocks` array and render each block with a dedicated React component selected via a component map.
+
+TECH & SETUP
+- Next.js (App Router) with TypeScript
+- Tailwind 4 CSS + shadcn/ui + lucide-react icons
+- No external API calls—
+- Accessibility, keyboard navigation, focus states
+- Basic SEO metadata for the landing page
+
+DATA MODEL (IMPORTANT)
+- Treat the landing page as a Strapi “single type” that returns a `blocks: Block[]` array.
+- Each block has a `__component` discriminator (e.g., `"section.hero"`, `"section.features"`).
+- Create TypeScript types for all block variants and a union type `Block`.
+- Use a component map or `switch` statement to select a block renderer.
+- Do not hardcode copy in components—read everything from the block props.
+
+REQUIREMENTS
+1. Sections (rendered from `blocks`):
+   - `section.hero` — headline, subhead, bullets, primary CTA (“Join Waitlist”), optional secondary CTA link.
+   - `section.problem-solution` — two short lists: pain points vs. how we solve them.
+   - `section.features` — feature card grid (icon, title, description).
+   - `section.testimonials` — quotes with name/role.
+   - `section.cta` — bold final CTA band (“Join Waitlist”).
+   - `section.footer` — links and social.
+
+2. Header / Nav
+   - Sticky header with logo (placeholder) and anchors to sections
+   - “Join Waitlist” CTA button that scrolls to the form
+
+3. Waitlist Form (core)
+   - Inline form block used in hero and CTA band (same component)
+   - Fields: email (required)
+   - Validation: email required
+   - On submit: simulate success response show toast
+
+4. **Code Structure**
+
+app/
+layout.tsx
+page.tsx
+globals.css
+components/
+blocks/
+Hero.tsx
+ProblemSolution.tsx
+Features.tsx
+Testimonials.tsx
+CTABand.tsx
+Footer.tsx
+WaitlistForm.tsx
+Header.tsx
+BlockRenderer.tsx
+
+- Use **component map** in `BlockRenderer.tsx` (no `any`).
+- Keep state local; no global state libraries.
+
+5. Styling & UI
+- Mobile-first, clean spacing, readable typography
+- Use shadcn/ui: `Button`, `Card`, `Accordion`, `Input`, `Textarea`, `Select`, `Badge`, `Dialog` (if needed)
+- Design polish is a priority — ensure modern, cohesive visual hierarchy, balanced whitespace, and consistent component styling
+- Use Tailwind utilities to achieve a visually appealing and on-brand design without sacrificing performance
+- Maintain accessibility and responsive layout across devices
+
+CONSTRAINTS
+- Prioritize both functionality and high-quality visual design**; final output should feel like a polished marketing site ready for launch.
+- Assume routing is already set up (single page at `/`).
+- Visual presentation matters — focus on layout, color balance, typography, and spacing while keeping the code type-safe and modular.
+
+DELIVERABLE
+Return a full working TypeScript code example with:
+1) Types for the blocks and shared data
+2) Block components (one per `__component`)
+3) `BlockRenderer` that dynamically renders the blocks
+4) A landing page (`app/page.tsx`) that fetches from the mock client and renders all blocks
+
+ACCEPTANCE CRITERIA
+- Page renders all sections from `blocks` with type-safe props
+- “Join Waitlist” form validates, simulates submission, persists payload in `localStorage`, and shows success feedback
+- UI is cohesive, responsive, and visually appealing — consistent paddings, margins, typography, and colors applied across all sections

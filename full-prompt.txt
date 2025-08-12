@@ -1,0 +1,39 @@
+You are a senior frontend developer experienced with TypeScript, React, Next.js, and building dynamic content-driven websites with Strapi as the backend.
+
+TASK: Build a mock frontend application in TypeScript that consumes the following API response (below under `<resource>`) and renders a blog platform.
+
+TECH: Use the following technologies
+- Next.js 15
+- Tailwind 4
+- ShadCN UI
+
+REQUIREMENTS:
+  - Create a blog listing page that displays all articles 
+  - Each article should show the title, description, author, category, and cover image 
+  - Include search functionality to filter articles by title or category - Implement pagination to support large datasets
+  - Pagination should display 4 items per page
+  - Create a single blog article page 
+  - When a user clicks on a blog post, they are taken to a detailed view using the slug 
+  - Render all associated blocks (rich-text, quotes, media, sliders) - Each block type should map to a dedicated React component 
+  - Use an object map or a `switch` statement to select the correct component for each block
+  - The application should use clean TypeScript types and structure
+  
+  CONSTRAINTS:
+  - Use the provided mock API data in `<resource>` to create the types and build all the appropriate componetns
+  - Afterwards use fetch to fetch the date from live url: https://inspired-duck-61a6601220.strapiapp.com/api/articles
+  - We are using Next.js App Router
+  - Design and layout is not important 
+  — focus on functional logic and clean structure
+  - Follow best practices in separating concerns and component design
+  
+  DELIVERABLE: Return a full working Blog website, with search and pagination features using TypeScript code example structured as follows:
+  
+  1. Type definitions for the API data
+  2. Components for each block type
+  3. Blog listing component with search and pagination
+  4. Single blog article page that renders all content blocks dynamically
+  5. A simple mock API client to fetch the data
+  
+  <resources>
+  
+  </resources>

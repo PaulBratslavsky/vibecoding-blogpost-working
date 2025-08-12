@@ -1,0 +1,130 @@
+{
+  "data": {
+    "id": 4,
+    "documentId": "v119x6hbaoi4k3xs0h2bxrcx",
+    "createdAt": "2025-08-10T22:06:04.811Z",
+    "updatedAt": "2025-08-10T22:19:03.445Z",
+    "publishedAt": "2025-08-10T22:19:03.464Z",
+    "title": "YT Influencer Connect",
+    "description": "Find your next influencer partnership.",
+    "blocks": [
+      {
+        "__component": "section.hero",
+        "id": 3,
+        "headline": "Manage YouTube influencer partnerships with ease",
+        "subhead": "Purpose-built CRM for creator discovery, outreach, briefs, and performance—designed for YouTube.",
+        "showForm": true,
+        "bullets": [
+          {
+            "id": 19,
+            "value": "Find the right creators by niche and audience"
+          },
+          {
+            "id": 20,
+            "value": "Find the right creators by niche and audience"
+          },
+          { "id": 21, "value": "Find the right creators by niche and audience" }
+        ],
+        "secondaryCta": null,
+        "image": {
+          "id": 1,
+          "documentId": "atqbkx8g82t5zuhhxmu4fkvg",
+          "alternativeText": null,
+          "url": "/uploads/pexels_aperture_32942828_833b0879c7.jpg"
+        }
+      },
+      {
+        "__component": "section.problem-solution",
+        "id": 3,
+        "title": "From chaos to clarity",
+        "pains": [
+          { "id": 22, "value": "Scattered spreadsheets and DMs" },
+          { "id": 23, "value": "Missed follow-ups and unclear statuses" },
+          { "id": 24, "value": "Difficulty measuring campaign ROI" }
+        ],
+        "solutions": [
+          {
+            "id": 25,
+            "value": "One place for discovery, outreach, and briefs"
+          },
+          { "id": 26, "value": "Automated reminders and clear pipelines" },
+          { "id": 27, "value": "Performance tracking tailored for YouTube" }
+        ]
+      },
+      {
+        "__component": "section.feature",
+        "id": 3,
+        "title": "Everything you need to collaborate at scale",
+        "items": [
+          {
+            "id": 7,
+            "icon": "Search",
+            "title": "Creator Discovery",
+            "description": "Filters by niche, region, audience size, and brand fit."
+          },
+          {
+            "id": 8,
+            "icon": "Handshake",
+            "title": "Outreach Tracking",
+            "description": "Centralized messages, statuses, and follow-ups."
+          },
+          {
+            "id": 9,
+            "icon": "Gauge",
+            "title": "Performance Analytics",
+            "description": "Views, CTR, conversions, and cost efficiency."
+          }
+        ]
+      },
+      {
+        "__component": "section.testimonial",
+        "id": 3,
+        "title": "What teams say",
+        "items": [
+          {
+            "id": 7,
+            "quote": "We moved our entire YouTube program into CollabFlow and cut campaign setup time in half.",
+            "name": "Priya S.",
+            "role": "Head of Influencer Marketing"
+          },
+          {
+            "id": 8,
+            "quote": "Finally a tool that gets how YouTube partnerships really work. The briefs feature is gold.",
+            "name": "Alex W.",
+            "role": "Creator Partnerships Lead"
+          },
+          {
+            "id": 9,
+            "quote": "Our reporting is so much cleaner, and the team never misses a follow-up anymore.",
+            "name": "Sam K.",
+            "role": "Growth Manager"
+          }
+        ]
+      },
+      {
+        "__component": "section.cta",
+        "id": 3,
+        "title": "Be first to try CollabFlow",
+        "subhead": "Join the waitlist and get early access invites.",
+        "showForm": true
+      },
+      {
+        "__component": "section.footer",
+        "id": 3,
+        "copyright": "CollabFlow. All rights reserved.",
+        "links": [
+          { "id": 9, "label": "Why", "href": "/" },
+          { "id": 10, "label": "Features", "href": "/" },
+          { "id": 11, "label": "Testimonials", "href": "/" },
+          { "id": 12, "label": " Join Waitlist", "href": "/" }
+        ],
+        "social": [
+          { "id": 7, "platform": "Twitter", "href": "https://x.com" },
+          { "id": 8, "platform": "YouTube", "href": "https://youtube.com" },
+          { "id": 9, "platform": "LinkedIn", "href": "https://linkedin.com" }
+        ]
+      }
+    ]
+  },
+  "meta": {}
+}
