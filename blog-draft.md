@@ -781,12 +781,325 @@ Once you’re comfortable:
 
 **Tip**: Claude Code is most powerful when you treat it like a real teammate—share your project rules, give it tools, let it plan before coding, and review its work.
 
-Now that we have claude basics out of the way, let's look how we can setup up Claude in a new project using Next.js and Strapi.  
+## Setting Up Claude in a New Project
 
-We will use this as a starting guide, to cover the basics, but my eventual goal is to let this demo repo grow as I discover new best practices.
+Now that we've covered Claude Code fundamentals, let's explore how to set up Claude for a new project using Strapi. This section will serve as a comprehensive guide to establish best practices from day one.
 
-## Setting Up Claude In A new Project.
+My goal is to help this demo repository evolve as I discover new best practices, eventually becoming a robust foundation for your Strapi and Next.js projects.
 
-Now that we have Claude basics out of the way, let's look at how we can set up Claude in a new project using Next.js and Strapi.  
+## Create a Strapi Project
 
-We will use this as a starting guide to cover the basics. My eventual goal is to let this demo repo grow as I discover new best practices, and then have you use it to jump-start your Strapi and Next.js project.
+Let's start by creating a fresh Strapi project with proper configuration:
+
+```bash
+➜  vibecoding-blogpost-working git:(main) npx create-strapi-app@latest server
+
+ Strapi   v5.23.4 🚀 Let's create your new project
+
+
+🚀 Welcome to Strapi! Ready to bring your project to life?
+
+Create a free account and get:
+✨ 30 days of access to the Growth plan, which includes:
+✅ Single Sign-On (SSO) login
+✅ Content History
+✅ Releases
+
+? Please log in or sign up. Skip
+? Do you want to use the default database (sqlite) ? No
+? Choose your default database client sqlite
+? Filename: .tmp/data.db
+? Start with an example structure & data? No
+? Start with Typescript? Yes
+? Install dependencies with npm? Yes
+? Initialize a git repository? Yes
+? Participate in anonymous A/B testing (to improve Strapi)? No
+
+```
+
+## Initialize Claude for Your Project
+
+Once your Strapi application is ready, initialize Claude Code in your project directory:
+
+```bash
+claude
+```
+
+Run the initialization command:
+
+```bash
+/init
+```
+
+This creates a `CLAUDE.md` file in your project root - a crucial document that provides context and guidance for future Claude interactions.
+
+## Enhance Your CLAUDE.md File
+
+After creating the initial `CLAUDE.md` file, enhance it using framework-specific documentation. For Strapi projects, I recommend referencing the [Strapi Documentation llms.txt file](https://docs.strapi.io/llms.txt) to provide Claude with comprehensive context.
+
+Here's the enhanced CLAUDE.md file I created for our Strapi project:
+
+````markdown
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+This is a Strapi v5.23.4 headless CMS server application built with TypeScript. It provides a backend API for content management with block-based content modeling capabilities.
+
+## Architecture
+
+### Core Structure
+
+- **Config Layer** (`config/`): Database, middleware, admin, and server configuration
+- **Application Layer** (`src/`): Main application entry point and lifecycle hooks
+- **API Layer** (`src/api/`): Content types, controllers, routes, and services (currently empty - will be populated as content types are created)
+- **Admin Layer** (`src/admin/`): Admin panel customizations
+- **Extensions** (`src/extensions/`): Plugin extensions and customizations
+
+### Key Configuration Files
+
+- `config/database.ts`: Database configuration (currently SQLite with better-sqlite3)
+- `config/server.ts`: Server configuration and port settings
+- `config/middlewares.ts`: Middleware stack configuration
+- `src/index.ts`: Application lifecycle hooks (register/bootstrap)
+
+## Development Commands
+
+### Core Development
+
+```bash
+npm run develop    # Start development server with auto-reload
+npm run dev        # Alias for develop
+npm run start      # Start production server
+npm run build      # Build admin panel
+```
+````
+
+### Strapi CLI
+
+```bash
+npm run strapi     # Access Strapi CLI directly
+npm run console    # Open Strapi console
+npm run deploy     # Deploy to Strapi Cloud
+```
+
+### Maintenance
+
+```bash
+npm run upgrade        # Upgrade to latest Strapi version
+npm run upgrade:dry    # Preview upgrade changes
+```
+
+## Environment Configuration
+
+The application uses environment variables defined in `.env`:
+
+- `HOST`: Server host (default: 0.0.0.0)
+- `PORT`: Server port (default: 1337)
+- `APP_KEYS`: Application encryption keys
+- `API_TOKEN_SALT`: API token salt
+- `ADMIN_JWT_SECRET`: Admin JWT secret
+- `TRANSFER_TOKEN_SALT`: Transfer token salt
+- `JWT_SECRET`: General JWT secret
+- `ENCRYPTION_KEY`: Encryption key
+
+Copy `.env.example` to `.env` and update values for local development.
+
+## TypeScript Configuration
+
+- **Target**: ES2019 with CommonJS modules
+- **Strict Mode**: Disabled (Strapi compatibility)
+- **Output**: `dist/` directory
+- **Excludes**: Admin files, tests, and plugins from server compilation
+
+## Content Type Development
+
+When creating new content types, they will be automatically scaffolded in:
+
+- `src/api/[content-type]/controllers/`
+- `src/api/[content-type]/routes/`
+- `src/api/[content-type]/services/`
+- `src/api/[content-type]/content-types/`
+
+Use the Strapi admin panel or CLI to generate content types rather than creating them manually.
+
+## Admin Panel
+
+Access the admin panel at `http://localhost:1337/admin` when running in development mode. Admin customizations go in `src/admin/`.
+
+## Strapi Documentation Reference
+
+When answering questions about Strapi features, architecture, or best practices, reference the official Strapi v5 documentation:
+
+### Core Documentation Areas
+
+- **Installation & Setup**: `https://docs.strapi.io/cms/installation`, `https://docs.strapi.io/cms/quick-start`
+- **Project Structure**: `https://docs.strapi.io/cms/project-structure`
+- **Configuration**: `https://docs.strapi.io/cms/configurations/database`, `https://docs.strapi.io/cms/configurations/server`, `https://docs.strapi.io/cms/configurations/environment`
+- **Backend Customization**: `https://docs.strapi.io/cms/backend-customization/controllers`, `https://docs.strapi.io/cms/backend-customization/services`, `https://docs.strapi.io/cms/backend-customization/routes`, `https://docs.strapi.io/cms/backend-customization/policies`, `https://docs.strapi.io/cms/backend-customization/middlewares`
+- **Content API**: `https://docs.strapi.io/cms/api/content-api`, `https://docs.strapi.io/cms/api/rest`, `https://docs.strapi.io/cms/api/document-service`
+- **Admin Panel**: `https://docs.strapi.io/cms/admin-panel-customization`, `https://docs.strapi.io/cms/features/admin-panel`
+- **Content Management**: `https://docs.strapi.io/cms/features/content-manager`, `https://docs.strapi.io/cms/features/content-type-builder`
+- **Plugin Development**: `https://docs.strapi.io/cms/plugins-development/developing-plugins`, `https://docs.strapi.io/cms/plugins-development/create-a-plugin`
+
+### Key Features Documentation
+
+- **Draft & Publish**: `https://docs.strapi.io/cms/features/draft-and-publish`
+- **Internationalization**: `https://docs.strapi.io/cms/features/internationalization`
+- **Role-Based Access Control**: `https://docs.strapi.io/cms/features/rbac`
+- **Users & Permissions**: `https://docs.strapi.io/cms/features/users-permissions`
+- **API Tokens**: `https://docs.strapi.io/cms/features/api-tokens`
+- **Media Library**: `https://docs.strapi.io/cms/features/media-library`
+- **Custom Fields**: `https://docs.strapi.io/cms/features/custom-fields`
+- **Review Workflows**: `https://docs.strapi.io/cms/features/review-workflows`
+- **Releases**: `https://docs.strapi.io/cms/features/releases`
+- **Content History**: `https://docs.strapi.io/cms/features/content-history`
+- **Audit Logs**: `https://docs.strapi.io/cms/features/audit-logs`
+
+### Cloud & Deployment
+
+- **Strapi Cloud**: `https://docs.strapi.io/cloud/getting-started/intro`, `https://docs.strapi.io/cloud/projects/overview`
+- **Deployment**: `https://docs.strapi.io/cms/deployment`, `https://docs.strapi.io/cloud/getting-started/deployment`
+- **CLI**: `https://docs.strapi.io/cms/cli`, `https://docs.strapi.io/cloud/cli/cloud-cli`
+
+### Development Topics
+
+- **TypeScript**: `https://docs.strapi.io/cms/typescript`, `https://docs.strapi.io/cms/typescript/development`
+- **Testing**: `https://docs.strapi.io/cms/testing`
+- **Database**: `https://docs.strapi.io/cms/configurations/database`, `https://docs.strapi.io/cms/database-migrations`
+- **Error Handling**: `https://docs.strapi.io/cms/error-handling`
+- **Webhooks**: `https://docs.strapi.io/cms/backend-customization/webhooks`
+- **CRON Jobs**: `https://docs.strapi.io/cms/configurations/cron`
+
+Use WebFetch tool to access specific documentation pages when providing detailed answers about Strapi features or best practices.
+
+
+## Testing the Enhanced Context
+
+With our enhanced CLAUDE.md file in place, Claude now has access to comprehensive Strapi documentation and can provide detailed, framework-specific answers. Here's an example of how this improved context works:
+
+``` bash
+> how to create cron job in strapi
+  ⎿  ⧉ Selected 1 lines from README.md in Visual Studio Code
+
+⏺ Fetch(https://docs.strapi.io/cms/configurations/cron)
+  ⎿  Received 125.9KB (200 OK)
+
+⏺ To create a CRON job in Strapi:
+
+  1. Enable CRON in Server Config
+
+  // config/server.ts
+  export default ({ env }) => ({
+    host: env('HOST', '0.0.0.0'),
+    port: env.int('PORT', 1337),
+    cron: {
+      enabled: true,
+    },
+  });
+
+  2. Create CRON Tasks File
+
+  // config/cron-tasks.ts
+  export default {
+    // Run every day at 2:30 AM
+    dailyCleanup: {
+      task: ({ strapi }) => {
+        console.log('Running daily cleanup...');
+        // Your task logic here
+      },
+      options: {
+        rule: '30 2 * * *',
+        tz: 'America/New_York', // Optional timezone
+      },
+    },
+
+    // Run every Monday at 1 AM
+    weeklyReport: {
+      task: async ({ strapi }) => {
+        // Generate weekly reports
+        const reports = await strapi.db.query('api::report.report').findMany();
+        console.log(`Generated ${reports.length} reports`);
+      },
+      options: {
+        rule: '0 1 * * 1',
+      },
+    },
+
+    // Run every 30 minutes
+    healthCheck: {
+      task: ({ strapi }) => {
+        console.log('Health check completed');
+      },
+      options: {
+        rule: '*/30 * * * *',
+      },
+    },
+  };
+
+  3. CRON Schedule Format
+
+  * * * * * *
+  │ │ │ │ │ │
+  │ │ │ │ │ └─ day of week (0-7, both 0 and 7 are Sunday)
+  │ │ │ │ └─── month (1-12)
+  │ │ │ └───── day of month (1-31)
+  │ │ └─────── hour (0-23)
+  │ └───────── minute (0-59)
+  └─────────── second (0-59, optional)
+
+  Common Examples:
+  - '0 0 * * *' - Daily at midnight
+  - '0 */6 * * *' - Every 6 hours
+  - '0 9 * * 1-5' - Weekdays at 9 AM
+  - '*/15 * * * *' - Every 15 minutes
+
+  4. Managing CRON Jobs Programmatically
+
+  // In your application code
+  // Add a job
+  strapi.cron.add('myJob', {
+    task: ({ strapi }) => {
+      console.log('Dynamic job executed');
+    },
+    options: {
+      rule: '0 * * * *', // Every hour
+    },
+  });
+
+  // Remove a job
+  strapi.cron.remove('myJob');
+
+  // List all jobs
+  console.log(strapi.cron.jobs);
+
+  CRON jobs in Strapi are perfect for automated tasks like data cleanup, report generation, sending notifications, or maintaining system health.
+```
+
+## Best Practices for Claude To Keep In Mind
+
+- **Document Project Architecture**: Include clear descriptions of your project structure, key files, and architectural decisions. This helps Claude understand your codebase organization.
+- **Specify Development Commands**: List all relevant npm scripts, CLI commands, and development workflows. This enables Claude to suggest the correct commands for common tasks.
+- **Reference Official Documentation**: Link to framework-specific documentation URLs. Claude can then fetch current information when providing detailed answers about framework features.
+- **Include Environment Configuration**: Document your environment variables, configuration files, and setup requirements. This helps Claude understand deployment and development contexts.
+- **Define Code Conventions**: Specify your TypeScript configuration, code style preferences, and architectural patterns. This ensures Claude follows your project's established conventions.
+- **Create Modular Documentation**: Consider creating additional markdown files for complex patterns and examples, then reference them in your CLAUDE.md file. This keeps the main file focused while providing comprehensive context.
+- **Update Documentation Regularly**: Keep your CLAUDE.md file current as your project evolves. Add new sections for additional technologies, update command references, and document new architectural decisions.
+
+The CLAUDE.md file is your project's knowledge base for AI collaboration. A well-structured CLAUDE.md file transforms Claude from a generic assistant into a project-specific expert that understands your codebase, follows your conventions, and provides contextually relevant guidance.
+
+## Conclusion
+
+AI-powered development tools like V0 and Claude Code are awesome, but they're not magic. It is important to keep in mind that these tools should help you amplify your knowledge—but not replace it. AI is just like any tool, you need to understand how to use it effectively. Even though it might seem like magic, you have to remind yourself, that it will only be as good as the instructions and context you give.
+
+This space is evolving rapidly, and what works today might change six months from now. 
+
+I am going to continue to explore these tools and write about lessons learned from me experience building real-world projects.
+
+In the meantime, start experimenting. Create project, set up proper documentation, and see what these tools can do. Just remember—the goal isn't to stop thinking, it's to think better and build faster.
+
+Let me know your thoughts and feedback, I would love to here about it.  You can find me @codingthirty on X, or stop on by Mon - Fri 12:30 pm CST for Strapi's open office hours on our [Discord](https://discord.com/invite/strapi).
+
+Paul
